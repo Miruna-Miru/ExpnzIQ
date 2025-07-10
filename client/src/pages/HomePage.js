@@ -6,6 +6,7 @@ import axios from 'axios';
 import Spinner from '../components/Spinner';
 import moment from 'moment';
 import Analytics from '../components/Analytics';
+import '../App.css';
 
 const { RangePicker } = DatePicker;
 
@@ -89,7 +90,7 @@ const HomePage = () => {
         getAllTransactions();
     }, [frequency, selectedDate,type]);
 
-    //delet handler
+    //delete handler
     const handleDelete = async(record) => {
         try{
             setLoading(true);
@@ -126,7 +127,7 @@ const HomePage = () => {
     }
 
     return(
-        <Layout>
+        <Layout id="App">
             {loading && <Spinner />}
             <div className="filters">
                 <div>

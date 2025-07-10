@@ -42,7 +42,7 @@ const Header = () => {
             to="/"
             style={{ color: 'white' }} 
           >
-            Expense Management
+            ExpenzIQ
           </Link>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">

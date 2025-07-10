@@ -7,6 +7,7 @@ import './Splash.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SplashGif from './Splash.gif';
 import { Container, Row, Col } from 'react-bootstrap'; 
+import './App.css';
 
 function SplashScreen() {
   return (
@@ -14,7 +15,7 @@ function SplashScreen() {
       <Row className="justify-content-center">
         <Col className="d-flex align-items-center justify-content-center">
           <img src={SplashGif} alt="Splash Screen" className="splash-gif" />
-          <h1 className="welcome-text">Expense Tracker</h1>
+          <h1 className="welcome-text">ExpenzIQ</h1>
         </Col>
       </Row>
     </Container>
