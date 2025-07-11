@@ -81,7 +81,7 @@ const HomePage = () => {
                 }));
                 setAllTransaction(transactionsWithKey);
                 console.log(res.data);
-                //setAllTransaction(res.data);
+              
             } catch (error) {
                 console.log(error);
                 message.error('Fetch Issue with Transaction');

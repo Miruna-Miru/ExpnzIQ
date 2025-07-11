@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { message } from 'antd';
 
 const Header = () => {
   const [loginUser, setLoginUser] = useState('');
   const navigate = useNavigate();
+  const location = useLocation(); // ⬅️ Get current path
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -19,11 +20,11 @@ const Header = () => {
     navigate('/login');
   };
 
+  // ⛔ Don’t show name & logout on /login or /register pages
+  const hideUserControls = location.pathname === '/login' || location.pathname === '/register';
+
   return (
-    <nav
-      className="navbar navbar-expand-lg"
-      style={{ backgroundColor: 'black' }} 
-    >
+    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: 'black' }}>
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -37,33 +38,32 @@ const Header = () => {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <Link
-            className="navbar-brand"
-            to="/"
-            style={{ color: 'white' }} 
-          >
+          <Link className="navbar-brand" to="/" style={{ color: 'white' }}>
             ExpnzIQ
           </Link>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <p className="nav-link" style={{ color: 'white' }}>
-                {loginUser && loginUser.name}
-              </p>
-            </li>
-            <li className="nav-item">
-              <button
-                className="btn"
-                onClick={logoutHandler}
-                style={{
-                  backgroundColor: 'white',
-                  color: 'black', 
-                  border: '1px solid black', 
-                }}
-              >
-                Logout
-              </button>
-            </li>
-          </ul>
+
+          {!hideUserControls && (
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <p className="nav-link" style={{ color: 'white' }}>
+                  {loginUser && loginUser.name}
+                </p>
+              </li>
+              <li className="nav-item">
+                <button
+                  className="btn"
+                  onClick={logoutHandler}
+                  style={{
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: '1px solid black',
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </nav>

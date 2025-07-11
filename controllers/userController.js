@@ -1,5 +1,5 @@
 const userModel = require('../models/userModel');
-const bcrypt = require('bcryptjs'); // ✅ import bcryptjs
+const bcrypt = require('bcryptjs'); 
 
 // LOGIN CONTROLLER
 const loginController = async (req, res) => {
